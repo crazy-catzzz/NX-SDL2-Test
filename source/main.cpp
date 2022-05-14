@@ -51,6 +51,7 @@ int main(int argc, char** argv) {
         in.current_button = -1;
 
         graphics_drawRectBorder(gfx, WHITE, &rects[0]);
+        graphics_drawRectBorder(gfx, RED, &rects[1]);
 
         SDL_SetRenderDrawColor(gfx.rend, gfx.bg.r, gfx.bg.g, gfx.bg.b, gfx.bg.a);
         SDL_RenderPresent(gfx.rend);

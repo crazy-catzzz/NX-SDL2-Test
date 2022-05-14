@@ -33,4 +33,5 @@ void graphics_init(graphics& gfx, color bgColor);
 void graphics_deinit(graphics& gfx);
 
 void graphics_drawRectBorder(graphics& gfx, color color, SDL_Rect* rect);
+void graphics_drawRectFill(graphics&gfx, color color, SDL_Rect* rect);
 void init_rect(SDL_Rect& rect, int x, int y, int w, int h);

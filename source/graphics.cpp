@@ -27,7 +27,16 @@ void init_rect(SDL_Rect& rect, int x, int y, int w, int h) {
 }
 void graphics_drawRectBorder(graphics& gfx, color color, SDL_Rect* rect) {
     SDL_SetRenderDrawColor(gfx.rend, color.r, color.g, color.b, color.a);
+    
     SDL_RenderDrawRect(gfx.rend, rect);
 
+    SDL_SetRenderDrawColor(gfx.rend, gfx.bg.r, gfx.bg.g, gfx.bg.b, gfx.bg.a);
+}
+void graphics_drawRectFill(graphics& gfx, color color, SDL_Rect* rect) {
+    SDL_SetRenderDrawColor(gfx.rend, color.r, color.g, color.b, color.a);
+    
+    SDL_RenderDrawRect(gfx.rend, rect);
+    SDL_RenderFillRect(gfx.rend, rect);
+    
     SDL_SetRenderDrawColor(gfx.rend, gfx.bg.r, gfx.bg.g, gfx.bg.b, gfx.bg.a);
 }
