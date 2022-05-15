@@ -1,6 +1,7 @@
 #include "../include/input.h"
 
 #include <switch.h>
+#include <iostream>
 
 void init_input(input& in, u32 maxPlayers) {
     in.max_players = maxPlayers;
@@ -11,6 +12,9 @@ void init_input(input& in, u32 maxPlayers) {
 int getInput(input& in) {
     padUpdate(&in.pad);
     u64 kDown = padGetButtonsDown(&in.pad);
+    u64 kUp = padGetButtonsUp(&in.pad);
+
+    std::cout << "kUp: " << kUp << std::endl;
 
     if (kDown & HidNpadButton_A)                return 0;
     if (kDown & HidNpadButton_B)                return 1;
@@ -36,11 +40,15 @@ int getInput(input& in) {
     if (kDown & HidNpadButton_StickRUp)         return 21;
     if (kDown & HidNpadButton_StickRRight)      return 22;
     if (kDown & HidNpadButton_StickRDown)       return 23;
-    if (kDown & HidNpadButton_LeftSL)           return 24;
-    if (kDown & HidNpadButton_LeftSR)           return 25;
-    if (kDown & HidNpadButton_RightSL)          return 26;
-    if (kDown & HidNpadButton_RightSR)          return 27;
-    if (kDown & HidNpadButton_Palma)            return 28;
-    if (kDown & HidNpadButton_29)               return 29;
-    if (kDown & HidNpadButton_HandheldLeftB)    return 30;
+    //if (kDown & HidNpadButton_LeftSL)           return 24;
+    //if (kDown & HidNpadButton_LeftSR)           return 25;
+    //if (kDown & HidNpadButton_RightSL)          return 26;
+    //if (kDown & HidNpadButton_RightSR)          return 27;
+    //if (kDown & HidNpadButton_Palma)            return 28;
+    //if (kDown & HidNpadButton_29)               return 29;
+    //if (kDown & HidNpadButton_HandheldLeftB)    return 30;
+
+    if (kUp != 0)                             return -1;
+
+    return in.current_button;
 }

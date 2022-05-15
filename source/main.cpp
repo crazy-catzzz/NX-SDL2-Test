@@ -39,16 +39,14 @@ int main(int argc, char** argv) {
     while(run) {
 
         in.current_button = getInput(in);
-        switch (in.current_button) {
-            case 0:
-                std::cout << "Pressed A" << std::endl;
-                SDL_SetRenderDrawColor(gfx.rend, 0, 255, 0, 255);
-                break;
-            case 10:
-                run = false;
-                break;
+        if (in.current_button != -1) {
+            if (in.current_button == 10) run = false;
+
+            if (in.current_button == 12) rects[1].x -= 10;
+            if (in.current_button == 13) rects[1].y -= 10;
+            if (in.current_button == 14) rects[1].x += 10;
+            if (in.current_button == 15) rects[1].y += 10;
         }
-        in.current_button = -1;
 
         graphics_drawRectBorder(gfx, WHITE, &rects[0]);
         graphics_drawRectBorder(gfx, RED, &rects[1]);
